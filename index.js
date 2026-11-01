@@ -22,7 +22,7 @@ export default {
 
     bot.start((ctx) => {
       return ctx.replyWithHTML(
-        `🔑 <b>REVZZ LICENSE BOT</b>\n\nHalo <b>${ctx.from.first_name}</b>!\n\nTerhubung ke:\n🔥 Firebase\n🌐 Web Create: ${WEB_CREATE}\n📊 Dashboard: ${WEB_DASHBOARD}\n\nKlik GET KEY, otomatis masuk web juga!`,
+        `🔑 <b>REVZZ LICENSE BOT</b>\n\nHalo <b>${ctx.from.first_name}</b>!\n\n🌐 Dashboard: ${WEB_DASHBOARD}`,
         mainMenu
       );
     });
@@ -45,9 +45,8 @@ export default {
           body: JSON.stringify(payload),
           headers: { "Content-Type": "application/json" }
         });
-
         return ctx.replyWithHTML(
-          `✅ <b>KEY BERHASIL!</b>\n\n🔑 <code>${newKey}</code>\n\n✅ Sudah masuk Firebase & Web!\n📊 Cek di: ${WEB_DASHBOARD}\n\nKlik key buat copy!`,
+          `✅ <b>KEY BERHASIL!</b>\n\n🔑 <code>${newKey}</code>\n\n📊 Cek: ${WEB_DASHBOARD}`,
           mainMenu
         );
       } catch (e) {
@@ -64,13 +63,16 @@ export default {
         const data = await res.json();
         if (!data) return ctx.reply("Belum ada key.", mainMenu);
         const keys = Object.keys(data);
-        let text = `📋 <b>${keys.length} KEYS - TERBARU 10</b>\n\n`;
-        keys.slice(-10).reverse().forEach((k,i) => text += `${i+1}. <code>${k}</code>\n`);
-        text += `\n🌐 Lengkap: ${WEB_DASHBOARD}`;
+        let text = `📋 <b>${keys.length} KEYS</b>\n\n`;
+        keys.slice(-10).reverse().forEach((k, i) => {
+          text += `${i + 1}. <code>${k}</code>\n`;
+        });
+        text += `\n🌐 ${WEB_DASHBOARD}`;
         return ctx.replyWithHTML(text, mainMenu);
       } catch (e) {
         return ctx.reply(`Error: ${e.message}`, mainMenu);
       }
     });
 
-    bot.hears("👤 AKUN SAYA", (ctx)
+    bot.hears("👤 AKUN SAYA", (ctx) => {
+      return ctx.replyWithHTML(`👤 <b>AKUN SAYA</
