@@ -1,7 +1,6 @@
 {
   "name": "revzz-license-bot",
-  "version": "1.0.0",
-  "main": "bot.js",
+  "type": "module",
   "dependencies": {
     "telegraf": "^4.15.0"
   }

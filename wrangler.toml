@@ -1,0 +1,3 @@
+name = "revzz-license-bot"
+main = "index.js"
+compatibility_date = "2027-01-01"
